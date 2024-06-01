@@ -14,11 +14,11 @@
     url: https://www.whonix.org/derivative.asc
     state: present
 
-- name: Hardened_malloc - Configure Whonix repository
-  ansible.builtin.apt_repository:
-    repo: 'deb https://deb.whonix.org bullseye main contrib non-free'
-    state: present
-    update_cache: yes
+#- name: Hardened_malloc - Configure Whonix repository
+#  ansible.builtin.apt_repository:
+#    repo: 'deb https://deb.whonix.org bullseye main contrib non-free'
+#    state: present
+#    update_cache: yes
 
 - name: Hardened_malloc - Update apt cache
   ansible.builtin.apt:
