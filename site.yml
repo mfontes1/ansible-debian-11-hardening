@@ -3,4 +3,4 @@
   hosts: all
   become: true
   roles:
-    - { role: debian-cis, tags: ['level1', 'level2'] }
+     - role: "{{ playbook_dir }}"
