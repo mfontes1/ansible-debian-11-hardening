@@ -1,0 +1,6 @@
+---
+- name: Harden Debian 11
+  hosts: all
+  become: true
+  roles:
+    - { role: debian-cis, tags: ['level1', 'level2'] }
