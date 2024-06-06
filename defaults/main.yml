@@ -22,7 +22,7 @@ sshd_macs: "hmac-sha2-256,hmac-sha2-512"
 sshd_kexalgorithms: "ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256"
 
 ## ClamAV
-###clamav_enabled: no
+clamav_enabled: no
 
 ## Fail2ban SSH
 fail2ban_enabled: yes
@@ -56,7 +56,7 @@ login_message: >
 ## Audit daemon (auditd)
 ## Configurations based on RHEL7 STIG
 auditd_enabled: yes
-###laurel_enabled: yes
+laurel_enabled: yes
 ## Set the auditd failure flag.
 ## 0: In the event of an auditing failure, do nothing.
 ## 1: In the event of an auditing failure, write messages to the kernel log.
