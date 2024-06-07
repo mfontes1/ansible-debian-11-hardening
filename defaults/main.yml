@@ -35,12 +35,12 @@ sysmon_enabled: no
 sysmon_collect_all_enabled: no
 
 ## Hardened_Malloc
-###hardened_malloc_enabled: yes # only installs the library
+hardened_malloc_enabled: yes # only installs the library
 ## Pre-loading hardened_malloc so that it is enabled system wide requires more
 ## memory and some applications may not run correctly.
 ## Alternative is run applications specifically with
 ## LD_PRELOAD='/usr/lib/libhardened_malloc.so/libhardened_malloc.so' app-name
-###system_preload_hardened_malloc_enabled: no
+system_preload_hardened_malloc_enabled: no
 
 ## Misc
 ## System reboot required for hardened_malloc preload, kernel updates and kernel
