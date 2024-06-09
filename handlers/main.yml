@@ -31,9 +31,6 @@
     - system_reboot_enabled | bool
     reboot_timeout: 120
   connection: ssh
-  remote_user: admin
-  private_key_file: ("/Users/marcio/Documents/ORT/SRD/labsuser.pem")
-    
 
 - name: Generate auditd Rules
   command: augenrules --load
