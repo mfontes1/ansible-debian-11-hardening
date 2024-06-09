@@ -5,10 +5,10 @@
 #    state: present
 #  vars:
 #    packages:
-    - clamav
-    - clamav-base
-    - clamav-daemon
-    - clamav-freshclam
+    #- clamav
+    #- clamav-base
+    #- clamav-daemon
+    #- clamav-freshclam
 #  register: clamav_install
 
 #- name: ClamAV - Run freshclam after ClamAV packages change.
@@ -18,8 +18,8 @@
 #  notify: Restart clamav-daemon
 #  ignore_errors: yes
 #  failed_when:
-    - freshclam_result is failed
-    - freshclam_result.stderr.find('locked by another process') != -1
+    #- freshclam_result is failed
+    #- freshclam_result.stderr.find('locked by another process') != -1
 
 #- name: ClamAV - Start and enable clamav-daemon
 #  ansible.builtin.systemd:
