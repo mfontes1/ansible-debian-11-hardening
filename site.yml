@@ -1,6 +1,6 @@
 ---
 - name: Harden Debian 11
-  hosts: all
+  hosts: local-host
   become: true
   roles:
      - role: "{{ playbook_dir }}"
