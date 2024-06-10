@@ -2,5 +2,9 @@
 - name: Harden Debian 11
   hosts: all
   become: true
+  tasks:
+    - include_tasks: tasks/main.yml
+  handlers:
+    - include_tasks: handlers/main.yml
   roles:
      - role: "{{ playbook_dir }}"
