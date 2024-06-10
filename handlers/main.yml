@@ -25,6 +25,7 @@
     state: restarted
 
 - name: Restart system
+  host: All
   become: yes
   ansible.builtin.reboot:
     when:
