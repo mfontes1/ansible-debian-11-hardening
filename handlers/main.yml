@@ -25,8 +25,14 @@
     state: restarted
 
 - name: Restart system
-  host: All
+  host: all
   become: yes
+  tasks:
+    - name: Reiniciar el sistema si está habilitado
+      ansible.builtin.reboot:
+        msg: "Reiniciando el sistema"
+        reboot_timeout: 600
+      when: system_reboot_enabled | bool
 #  ansible.builtin.reboot:
 #    when:
 #    - system_reboot_enabled | bool
