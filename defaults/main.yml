@@ -45,7 +45,7 @@ system_preload_hardened_malloc_enabled: no
 ## Misc
 ## System reboot required for hardened_malloc preload, kernel updates and kernel
 ## module hardening
-system_reboot_enabled: yes
+system_reboot_enabled: no
 network_ipv6_disabled: yes
 timezone: Etc/UTC
 login_message: >
