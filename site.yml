@@ -1,13 +1,5 @@
 ---
-#- name: Harden Debian 11
-#  hosts: all
-#  become: true
-#  tasks:
-#    - include_tasks: tasks/main.yml
-#  handlers:
-#    - include_tasks: handlers/main.yml
-#  roles:
-#     - role: "{{ playbook_dir }}"
+
 
 - name: Harden Debian 11
   hosts: localhost
@@ -15,8 +7,12 @@
   roles:
     - role: "{{ playbook_dir }}"
   handlers:
-    - include_tasks: handlers/main.yml  
-  
+    - include_tasks: handlers/main.yml
+    - name: Reload firewalld
+      service:
+        name: firewalld
+        state: reloaded
+
   tasks:
     - name: Ensure firewalld is installed
       apt:
@@ -35,6 +31,7 @@
         permanent: yes
         state: enabled
         immediate: yes
+      notify: Reload firewalld
 
     - name: Add HTTPS service to firewalld
       firewalld:
@@ -42,10 +39,7 @@
         permanent: yes
         state: enabled
         immediate: yes
-
-    - name: Reload firewalld to apply changes
-      firewalld:
-        state: reloaded
+      notify: Reload firewalld
 
     - name: Add HTTP rule to nftables
       command: nft add rule inet firewalld filter_INPUT tcp dport 80 accept
@@ -62,4 +56,3 @@
     - name: Print fail2ban status
       debug:
         var: fail2ban_status.stdout_lines
-  
