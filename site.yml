@@ -15,4 +15,51 @@
   roles:
     - role: "{{ playbook_dir }}"
   handlers:
-    - include_tasks: handlers/main.yml     
+    - include_tasks: handlers/main.yml  
+  
+  tasks:
+    - name: Ensure firewalld is installed
+      apt:
+        name: firewalld
+        state: present
+
+    - name: Ensure firewalld is running and enabled
+      systemd:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: Add HTTP service to firewalld
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: Add HTTPS service to firewalld
+      firewalld:
+        service: https
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: Reload firewalld to apply changes
+      firewalld:
+        state: reloaded
+
+    - name: Add HTTP rule to nftables
+      command: nft add rule inet firewalld filter_INPUT tcp dport 80 accept
+      ignore_errors: yes
+
+    - name: Add HTTPS rule to nftables
+      command: nft add rule inet firewalld filter_INPUT tcp dport 443 accept
+      ignore_errors: yes
+
+    - name: Check fail2ban status
+      command: fail2ban-client status
+      register: fail2ban_status
+
+    - name: Print fail2ban status
+      debug:
+        var: fail2ban_status.stdout_lines
+  
