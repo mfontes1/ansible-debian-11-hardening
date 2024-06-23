@@ -49,9 +49,9 @@
       command: nft add rule inet firewalld filter_INPUT tcp dport 443 accept
       ignore_errors: yes
 
-    - name: Check fail2ban status
-      command: fail2ban-client status
-      register: fail2ban_status
+#    - name: Check fail2ban status
+#      command: fail2ban-client status
+#      register: fail2ban_status
 
     - name: Print fail2ban status
       debug:
