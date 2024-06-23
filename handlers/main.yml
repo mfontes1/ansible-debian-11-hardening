@@ -4,10 +4,10 @@
     name: firewalld.service
     state: restarted
 
-#- name: Restart fail2ban
-#  ansible.builtin.systemd:
-#    name: fail2ban.service
-#    state: restarted
+- name: Restart fail2ban
+  ansible.builtin.systemd:
+    name: fail2ban.service
+    state: restarted
 
 - name: Restart sshd
   ansible.builtin.systemd:
